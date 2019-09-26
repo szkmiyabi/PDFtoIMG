@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using PdfiumViewer;
+using System.Drawing.Imaging;
+
 namespace PDFtoIMG
 {
     public partial class Form1 : Form
@@ -14,6 +17,13 @@ namespace PDFtoIMG
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PdfDocument pdfDoc = PdfDocument.Load(@"C:\Users\szkmiyabi\Desktop\test.pdf");
+            Image img = pdfDoc.Render(0, 300, 300, false);
+            img.Save(@"C:\Users\szkmiyabi\Desktop\test.jpg", ImageFormat.Jpeg);
         }
     }
 }
