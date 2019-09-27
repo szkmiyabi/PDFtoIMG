@@ -41,6 +41,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.doWriteImageButton = new System.Windows.Forms.Button();
+            this.pageCountCombo = new System.Windows.Forms.ComboBox();
+            this.outputPdfPageCombo = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.fileTypeCombo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -61,7 +65,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(374, 107);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 107);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -72,7 +76,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(368, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(366, 30);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // pdfFilePath
@@ -111,7 +115,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 39);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(368, 30);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(366, 30);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label2
@@ -152,16 +156,20 @@
             // 
             // flowLayoutPanel3
             // 
+            this.flowLayoutPanel3.Controls.Add(this.outputPdfPageCombo);
+            this.flowLayoutPanel3.Controls.Add(this.pageCountCombo);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.fileTypeCombo);
             this.flowLayoutPanel3.Controls.Add(this.doWriteImageButton);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(144, 75);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 75);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(227, 29);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(366, 29);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
             // doWriteImageButton
             // 
-            this.doWriteImageButton.Location = new System.Drawing.Point(3, 3);
+            this.doWriteImageButton.Location = new System.Drawing.Point(280, 3);
             this.doWriteImageButton.Name = "doWriteImageButton";
             this.doWriteImageButton.Size = new System.Drawing.Size(75, 23);
             this.doWriteImageButton.TabIndex = 0;
@@ -169,11 +177,48 @@
             this.doWriteImageButton.UseVisualStyleBackColor = true;
             this.doWriteImageButton.Click += new System.EventHandler(this.doWriteImageButton_Click);
             // 
+            // pageCountCombo
+            // 
+            this.pageCountCombo.FormattingEnabled = true;
+            this.pageCountCombo.Location = new System.Drawing.Point(68, 3);
+            this.pageCountCombo.Name = "pageCountCombo";
+            this.pageCountCombo.Size = new System.Drawing.Size(64, 20);
+            this.pageCountCombo.TabIndex = 1;
+            // 
+            // outputPdfPageCombo
+            // 
+            this.outputPdfPageCombo.AutoSize = true;
+            this.outputPdfPageCombo.Location = new System.Drawing.Point(3, 6);
+            this.outputPdfPageCombo.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.outputPdfPageCombo.Name = "outputPdfPageCombo";
+            this.outputPdfPageCombo.Size = new System.Drawing.Size(59, 12);
+            this.outputPdfPageCombo.TabIndex = 2;
+            this.outputPdfPageCombo.Text = "出力ページ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(138, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "画像形式";
+            // 
+            // fileTypeCombo
+            // 
+            this.fileTypeCombo.FormattingEnabled = true;
+            this.fileTypeCombo.Location = new System.Drawing.Point(197, 3);
+            this.fileTypeCombo.Margin = new System.Windows.Forms.Padding(3, 3, 15, 3);
+            this.fileTypeCombo.Name = "fileTypeCombo";
+            this.fileTypeCombo.Size = new System.Drawing.Size(65, 20);
+            this.fileTypeCombo.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 107);
+            this.ClientSize = new System.Drawing.Size(372, 107);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -184,6 +229,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -202,6 +248,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button doWriteImageButton;
+        private System.Windows.Forms.Label outputPdfPageCombo;
+        private System.Windows.Forms.ComboBox pageCountCombo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox fileTypeCombo;
     }
 }
 
