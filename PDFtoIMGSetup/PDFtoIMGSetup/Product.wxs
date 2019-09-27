@@ -1,30 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="PDFtoIMGSetup" Language="1033" Version="1.0.0.0" Manufacturer="" UpgradeCode="276322fb-f934-4253-aa9d-a9bc817ddaa2">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+  <Product Name="PDFtoIMG" Id="B406812A-62E1-4F43-9F5F-93AADAC28AE6" UpgradeCode="FE315D1E-9632-4015-A370-05D49BA3938D" Language="1041" Codepage="932" Version="0.0.0.1" Manufacturer="JCI-TN">
+    <Package Id="*" Keywords="インストーラー" Manufacturer="JCI-TN" InstallerVersion="200" Languages="1041" Compressed="yes" SummaryCodepage="932" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+    <Media Id="1" Cabinet="Product.cab" EmbedCab="yes" />
 
-		<Feature Id="ProductFeature" Title="PDFtoIMGSetup" Level="1">
-			<ComponentGroupRef Id="ProductComponents" />
-		</Feature>
-	</Product>
+    <Directory Id="TARGETDIR" Name="SourceDir">
 
-	<Fragment>
-		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="PDFtoIMGSetup" />
-			</Directory>
-		</Directory>
-	</Fragment>
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLDIR" Name="PDFtoIMG">
 
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
-		</ComponentGroup>
-	</Fragment>
+          <Component Id="Component1" Guid="EB8A867E-60B7-452A-B01D-9A973F5EE076">
+            <File Id="PTIEXE" Name="PDFtoIMG.exe" KeyPath="yes" DiskId="1" Source="..\..\PDFtoIMG\bin\Release\PDFtoIMG.exe">
+              <Shortcut Id="startMenuPTI" Directory="ProgramMenuDir" Name="PDFtoIMG" WorkingDirectory="INSTALLDIR" Icon="PITIcon.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="desktopPTI" Directory="DesktopFolder" Name="PDFtoIMG" WorkingDirectory="INSTALLDIR" Icon="PITIcon.exe" IconIndex="0" Advertise="yes" />
+            </File>
+          </Component>
+          <Component Id="Component2" Guid="4B367D5A-DC07-4DD8-A391-A6BB900889D8">
+            <File Id="PDFiumViewer_dll" KeyPath="yes" DiskId="1" Source="..\..\PDFtoIMG\bin\Release\PdfiumViewer.dll"></File>
+          </Component>
+
+          <Directory Id="PDFIUMDLLDIR" Name="x86">
+            <Component Id="Component3" Guid="7F6FE6A0-97ED-4FFF-8803-F174398A513F">
+              <File Id="PDFium_dll" KeyPath="yes" DiskId="1" Source="..\..\PDFtoIMG\bin\Release\x86\pdfium.dll"></File>
+            </Component>
+          </Directory>
+
+          <Directory Id="PDFIUMNLDIR" Name="nl">
+            <Component Id="Component4" Guid="60766CD4-CF10-4E32-8D93-078CE99FE10E">
+              <File Id="PDFium_Resorces_dll" KeyPath="yes" DiskId="1" Source="..\..\PDFtoIMG\bin\Release\nl\PdfiumViewer.resources.dll"></File>
+            </Component>
+          </Directory>
+
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="PDFtoIMG">
+          <Component Id="ProgramMenuDir" Guid="44666C7F-58D8-4028-A235-46CE9439062E">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+            <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+
+    </Directory>
+
+    <Feature Id="Complete" Level="1">
+      <ComponentRef Id="Component1" />
+      <ComponentRef Id="Component2" />
+      <ComponentRef Id="Component3" />
+      <ComponentRef Id="Component4" />
+      <ComponentRef Id="ProgramMenuDir"/>
+    </Feature>
+
+    <Icon Id="PITIcon.exe" SourceFile="..\..\PDFtoIMG\bin\Release\PDFtoIMG.exe" />
+
+  </Product>
 </Wix>
