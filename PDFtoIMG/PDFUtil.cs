@@ -29,7 +29,8 @@ namespace PDFtoIMG
                 pdoc = PdfDocument.Load(infile);
                 pcnt = pdoc.PageCount;
             } catch (Exception ex) {
-                pdoc.Dispose();
+                MessageBox.Show(ex.Message);
+                //pdoc.Dispose();
                 return;
             }
 
