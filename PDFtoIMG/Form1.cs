@@ -19,11 +19,5 @@ namespace PDFtoIMG
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PdfDocument pdfDoc = PdfDocument.Load(@"C:\Users\szkmiyabi\Desktop\test.pdf");
-            Image img = pdfDoc.Render(0, 300, 300, false);
-            img.Save(@"C:\Users\szkmiyabi\Desktop\test.jpg", ImageFormat.Jpeg);
-        }
     }
 }
